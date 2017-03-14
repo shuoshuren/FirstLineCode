@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/contenttest/contenttest.iml" filepath="$PROJECT_DIR$/contenttest/contenttest.iml" />
       <module fileurl="file://$PROJECT_DIR$/forceoffline/forceoffline.iml" filepath="$PROJECT_DIR$/forceoffline/forceoffline.iml" />
       <module fileurl="file://$PROJECT_DIR$/litepaltest/litepaltest.iml" filepath="$PROJECT_DIR$/litepaltest/litepaltest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/servicetest/servicetest.iml" filepath="$PROJECT_DIR$/servicetest/servicetest.iml" />
     </modules>
   </component>
 </project>

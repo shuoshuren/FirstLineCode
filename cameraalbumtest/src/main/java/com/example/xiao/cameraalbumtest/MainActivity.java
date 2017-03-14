@@ -25,6 +25,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import org.xml.sax.helpers.DefaultHandler;
+
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         mTakePhotoBtn = (Button) findViewById(R.id.take_photo);
         mChoseAlbumBtn = (Button) findViewById(R.id.chose_from_album);
