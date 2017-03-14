@@ -2,6 +2,7 @@ package com.example.xiao.materialdesign;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -10,11 +11,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
+    private NavigationView mNavigationView;
+    private FloatingActionButton mFloatingBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,15 +27,32 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);//让导航按钮显示出来
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);//设置导航按钮图标，默认是向左的箭头
         }
-        navigationView.setCheckedItem(R.id.nav_call);//设置默认选中的Item
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+
+        initView();
+        initEvent();
+
+
+
+
+
+    }
+
+    private void initView() {
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
+        mFloatingBtn = (FloatingActionButton) findViewById(R.id.floating);
+
+        mNavigationView.setCheckedItem(R.id.nav_call);//设置默认选中的Item
+    }
+
+    private void initEvent() {
+        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 mDrawerLayout.closeDrawers();
@@ -39,6 +60,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mFloatingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this,"floatingActionButton click",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 
