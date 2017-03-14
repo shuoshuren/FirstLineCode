@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null){
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);//让导航按钮显示出来
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);//设置导航按钮图标，默认是向左的箭头
         }
@@ -44,27 +44,26 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar,menu);
+        getMenuInflater().inflate(R.menu.toolbar, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.menu_backup:
-                Toast.makeText(MainActivity.this,"点击了备份",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "点击了备份", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.menu_delete:
-                Toast.makeText(MainActivity.this,"点击了删除",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "点击了删除", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.menu_setting:
-                Toast.makeText(MainActivity.this,"点击了设置",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "点击了设置", Toast.LENGTH_SHORT).show();
                 break;
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 break;
         }
-
 
 
         return true;
