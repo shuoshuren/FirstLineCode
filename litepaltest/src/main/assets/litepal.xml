@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <!--数据库名-->
+    <dbname value="BookStore"/>
+    <!--数据库版本-->
+    <version value="2"/>
+
+    <!--对象关系映射列表-->
+    <list>
+        <mapping class="com.example.xiao.litepaltest.bean.Book" ></mapping>
+        <mapping class="com.example.xiao.litepaltest.bean.Category"></mapping>
+    </list>
+
+</litepal>
