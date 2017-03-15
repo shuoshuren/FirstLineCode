@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FirstLineCode.iml" filepath="$PROJECT_DIR$/FirstLineCode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/advancedskill/advancedskill.iml" filepath="$PROJECT_DIR$/advancedskill/advancedskill.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/cameraalbumtest/cameraalbumtest.iml" filepath="$PROJECT_DIR$/cameraalbumtest/cameraalbumtest.iml" />
       <module fileurl="file://$PROJECT_DIR$/contenttest/contenttest.iml" filepath="$PROJECT_DIR$/contenttest/contenttest.iml" />
