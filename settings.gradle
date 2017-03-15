@@ -1,1 +1,1 @@
-include ':app', ':forceoffline', ':litepaltest', ':contenttest', ':cameraalbumtest', ':servicetest', ':materialdesign', ':advancedskill'
+include ':app', ':forceoffline', ':litepaltest', ':contenttest', ':cameraalbumtest', ':servicetest', ':materialdesign', ':advancedskill', ':coolweather'
