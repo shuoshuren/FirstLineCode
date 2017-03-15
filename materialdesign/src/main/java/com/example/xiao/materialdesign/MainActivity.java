@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private SwipeRefreshLayout mSwipeRefresh;
 
     private FruitAdapter mAdapter;
-    private Fruit[] fruits = {new Fruit("apple",R.drawable.apple),new Fruit("banana",R.drawable.banana),
+    private Fruit[] fruits = {new Fruit("Apple",R.drawable.apple),new Fruit("Banana",R.drawable.banana),
             new Fruit("Orange",R.drawable.orange),new Fruit("Watermelon",R.drawable.watermelon),
             new Fruit("Pear",R.drawable.pear),new Fruit("Grape",R.drawable.grape),
             new Fruit("PineApple",R.drawable.pineapple),new Fruit("StrawBerry",R.drawable.strawberry),

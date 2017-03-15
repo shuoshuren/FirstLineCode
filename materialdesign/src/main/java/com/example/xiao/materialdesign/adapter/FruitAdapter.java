@@ -1,6 +1,7 @@
 package com.example.xiao.materialdesign.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.xiao.materialdesign.FruitActivity;
 import com.example.xiao.materialdesign.R;
 import com.example.xiao.materialdesign.bean.Fruit;
 
@@ -33,8 +35,19 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> 
     public FruitAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View rootView = LayoutInflater.from(mContext).inflate(R.layout.fruit_item,parent,false);
-
-        return new ViewHolder(rootView);
+        final ViewHolder holder = new ViewHolder(rootView);
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                Fruit fruit = mDatas.get(position);
+                Intent intent = new Intent(mContext, FruitActivity.class);
+                intent.putExtra(FruitActivity.FRUIT_IMAGE_ID,fruit.getImageId());
+                intent.putExtra(FruitActivity.FRUIT_TEXT,fruit.getName());
+                mContext.startActivity(intent);
+            }
+        });
+        return holder;
     }
 
     @Override
