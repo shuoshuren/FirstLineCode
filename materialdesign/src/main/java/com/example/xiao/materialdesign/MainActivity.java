@@ -7,6 +7,7 @@ import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView mNavigationView;
     private FloatingActionButton mFloatingBtn;
     private RecyclerView mRecyclerView;
+
+    private SwipeRefreshLayout mSwipeRefresh;
 
     private FruitAdapter mAdapter;
     private Fruit[] fruits = {new Fruit("apple",R.drawable.apple),new Fruit("banana",R.drawable.banana),
@@ -66,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initData() {
+        fruitList.clear();
         for (Fruit fruit:fruits){
             fruitList.add(fruit);
         }
@@ -85,6 +89,9 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(layoutManager);
         mAdapter = new FruitAdapter(this,fruitList);
         mRecyclerView.setAdapter(mAdapter);
+
+        mSwipeRefresh = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
+        mSwipeRefresh.setColorSchemeResources(R.color.colorPrimary);
 
 
     }
@@ -110,6 +117,34 @@ public class MainActivity extends AppCompatActivity {
                         }).show();
             }
         });
+
+        mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshFruits();
+            }
+        });
+    }
+
+    private void refreshFruits() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    Thread.sleep(1000);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        initData();
+                        mAdapter.notifyDataSetChanged();
+                        mSwipeRefresh.setRefreshing(false);
+                    }
+                });
+            }
+        }).start();
     }
 
 
