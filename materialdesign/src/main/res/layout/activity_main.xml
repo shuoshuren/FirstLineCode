@@ -8,24 +8,40 @@
 
     >
 
+    <!--加强版的FrameLayout-->
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <!--垂直方向的LinearLayout，用于解决Toolbar和RecyclerView遮挡问题，封装了很多滚动事件-->
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            android:layout_height="wrap_content">
 
+            <!--
+                app:layout_scrollFlags属性参数解释：
+                scroll：表示当RecyclerView向上滚动时候，toolbar会跟着向上滚动并实现影藏
+                enterAllways：表示当RecyclerView向下滚动时，Toolbar会跟着向下滚动并重新显示
+                snap：表示当Toolbar还没有完全影藏或显示的时候，会根据当前滚动的距离，自动选择影藏或显示
+            -->
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                />
+
+        </android.support.design.widget.AppBarLayout>
 
         <android.support.v7.widget.RecyclerView
-            android:layout_marginTop="?attr/actionBarSize"
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            />
 
 
         <android.support.design.widget.FloatingActionButton
