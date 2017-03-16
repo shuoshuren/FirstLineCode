@@ -21,6 +21,12 @@ public class Suggestion {
         @SerializedName("txt")
         public String info;
 
+        @Override
+        public String toString() {
+            return "Comfort{" +
+                    "info='" + info + '\'' +
+                    '}';
+        }
     }
 
     public class CarWash {
@@ -28,6 +34,12 @@ public class Suggestion {
         @SerializedName("txt")
         public String info;
 
+        @Override
+        public String toString() {
+            return "CarWash{" +
+                    "info='" + info + '\'' +
+                    '}';
+        }
     }
 
     public class Sport {
@@ -35,5 +47,21 @@ public class Suggestion {
         @SerializedName("txt")
         public String info;
 
+
+        @Override
+        public String toString() {
+            return "Sport{" +
+                    "info='" + info + '\'' +
+                    '}';
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Suggestion{" +
+                "comfort=" + comfort +
+                ", carWash=" + carWash +
+                ", sport=" + sport +
+                '}';
     }
 }

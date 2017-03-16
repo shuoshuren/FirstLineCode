@@ -7,39 +7,65 @@
     android:background="@color/colorPrimary"
     tools:context="com.example.xiao.coolweather.WeatherActivity">
 
+    <!-- 背景图片 -->
     <ImageView
         android:id="@+id/bing_pic_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        />
-    
-    <ScrollView
-        android:id="@+id/weather_layout"
+        android:scaleType="centerCrop" />
+
+    <!--滑动菜单-->
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none"
-        android:overScrollMode="never"
-        >
-        <LinearLayout
-            android:orientation="vertical"
+        android:layout_height="match_parent">
+
+
+        <!-- 主布局 -->
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            >
+            android:layout_height="match_parent">
 
-            <include layout="@layout/title" />
 
-            <include layout="@layout/now" />
+            <ScrollView
+                android:id="@+id/weather_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                android:scrollbars="none">
 
-            <include layout="@layout/forecast" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fitsSystemWindows="true"
+                    android:orientation="vertical">
 
-            <include layout="@layout/aqi" />
+                    <include layout="@layout/title" />
 
-            <include layout="@layout/suggestion" />
+                    <include layout="@layout/now" />
 
-        </LinearLayout>
+                    <include layout="@layout/forecast" />
 
-    </ScrollView>
+                    <include layout="@layout/aqi" />
+
+                    <include layout="@layout/suggestion" />
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <!--侧滑菜单-->
+        <fragment
+            android:id="@+id/chose_area_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:name="com.example.xiao.coolweather.ChoseAreaFragment"
+            />
+
+    </android.support.v4.widget.DrawerLayout>
 
 </FrameLayout>
