@@ -1,5 +1,6 @@
 package com.example.xiao.coolweather;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -73,7 +74,6 @@ public class ChoseAreaFragment extends Fragment {
         listView = (ListView) rootView.findViewById(R.id.list_view);
         adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, dataList);
         listView.setAdapter(adapter);
-
         return rootView;
     }
 
@@ -92,13 +92,14 @@ public class ChoseAreaFragment extends Fragment {
                     queryCounties();
                 } else if(currentLevel == LEVEL_COUNTY){
                     String weatherId = countyList.get(position).getWeatherId();
-                    if(getActivity() instanceof MainActivity){
-                        Intent intent = new Intent(getActivity(),WeatherActivity.class);
+                    Activity activity = getActivity();
+                    if(activity instanceof MainActivity){
+                        Intent intent = new Intent(activity,WeatherActivity.class);
                         intent.putExtra("weather_id",weatherId);
                         startActivity(intent);
-                        getActivity().finish();
-                    }else{
-                        WeatherActivity weatherActivity = (WeatherActivity) getActivity();
+                        activity.finish();
+                    }else if(activity instanceof WeatherActivity){
+                        WeatherActivity weatherActivity = (WeatherActivity) activity;
                         weatherActivity.changeAreaWeather(weatherId);
                     }
 
